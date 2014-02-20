@@ -3,7 +3,7 @@
 class Tags_Like_Meta_Box {
 
 	function __construct( $args ) {
-		if ( $args['ID'])
+		if ( !$args['ID'])
 			return;
 		$this->ID = $args['ID'];
 		$this->labels->nice_name = $args['nice_name'] ? $args['nice_name']  : $args['ID'];
@@ -25,14 +25,48 @@ class Tags_Like_Meta_Box {
 
 	function add_style() {
 		?><style>
+		.<?php echo $this->labels->checklist; ?>{
+			margin-left: 14px;
+			font-size: 12px;
+			overflow: auto;
+		} 
 		.<?php echo $this->labels->checklist; ?> span {
-		margin-right: 25px;
-		display: block;
-		font-size: 11px;
-		line-height: 1.8em;
-		white-space: nowrap;
-		cursor: default;
-		}</style>
+			margin-right: 25px;
+			display: block;
+			float: left;
+			font-size: 13px;
+			line-height: 1.8em;
+			white-space: nowrap;
+			cursor: default;
+		}
+		.<?php echo $this->labels->checklist; ?> .ntdelbutton{
+			margin: 1px 0 0 -17px;
+			cursor: pointer;
+			width: 20px;
+			height: 20px;
+			display: block;
+			float: left;
+			text-indent: 0;
+			overflow: hidden;
+			position: absolute;
+		}
+		.<?php echo $this->labels->checklist; ?> .ntdelbutton:hover::before{
+			color: #c00;
+		}
+		.<?php echo $this->labels->checklist; ?> .ntdelbutton::before{
+			background: 0 0;
+			color: #bbb;
+			content: '\f153';
+			display: block!important;
+			font: 400 16px/1 dashicons;
+			speak: none;
+			height: 20px;
+			margin: 2px 0;
+			text-align: center;
+			width: 20px;
+			-webkit-font-smoothing: antialiased!important;
+		}
+		</style>
 		<?php
 	}
 	function add_meta_box() {
@@ -74,7 +108,7 @@ class Tags_Like_Meta_Box {
 			</div>
 			<?php endif; ?>
 			</div>
-			<div class="<?php echo $this->labels->checklist; ?>"></div>
+			<div class="tagckecklist <?php echo $this->labels->checklist; ?>"></div>
 		</div>
 		<?php
 	}
@@ -161,7 +195,7 @@ class Tags_Like_Meta_Box {
 
 				current_tags = thetags.val().split(';');
 				tagchecklist.empty();
-				console.log(current_tags);
+				//console.log(current_tags);
 				$.each( current_tags, function( key, val ) {
 
 					var span, xbutton;
