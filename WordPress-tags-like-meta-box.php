@@ -7,6 +7,7 @@ class Tags_Like_Meta_Box {
 			return;
 		$this->ID = $args['ID'];
 		$this->labels->nice_name = $args['nice_name'] ? $args['nice_name']  : $args['ID'];
+		$this->labels->context = $args['context'] ? $args['context']  : "side";
 		$this->labels->checklist = $this->ID . "-checklist";
 		$this->labels->div = $this->ID . "-div";
 		$this->labels->ajaxtag = $this->ID . "-ajaxtag";
@@ -71,7 +72,7 @@ class Tags_Like_Meta_Box {
 	}
 	function add_meta_box() {
 		
-		add_meta_box($this->ID, $this->labels->nice_name, array( $this, 'meta_box' ), null, 'side', 'core');	
+		add_meta_box($this->ID, $this->labels->nice_name, array( $this, 'meta_box' ), null, $this->labels->context, 'core');	
 	}
 
 	function ajax_get_tags() {
