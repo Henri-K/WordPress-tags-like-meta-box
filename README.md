@@ -7,7 +7,7 @@ This helper class will allow you to customize a tags-like meta box of your own w
 ##Use
 Include the class file anywhere (in your plugin or theme), and then instantiate the class.
 
-    $myVersionOfTags = new Tags_Like_Meta_box( array( 'ID' => 'post-notes', 'nice_name' => 'Notes' );
+    $myVersionOfTags = new Tags_Like_Meta_box( array( 'ID' => 'post-notes', 'nice_name' => 'Notes’, ‘context’ => ‘normal’ );
 
 By default the meta box is added over all post types, and saves any data into a piece of post meta for the post. 
 
